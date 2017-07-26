@@ -1,0 +1,284 @@
+<link rel="import" href="/bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-layout/app-grid/app-grid-style.html">
+<link rel="import" href="../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="playground-icons.html">
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/alicorn-scroll-watcher/alicorn-scroll-watcher.html">
+
+<dom-module id="playground-home">
+    <template>
+        <style include="app-grid-style">
+             :host {
+                /*--app-primary-color: #4285f4;
+                --app-secondary-color: black;*/
+                --app-grid-columns: 3;
+                --app-grid-item-height: 100px;
+                --app-grid-expandible-item-columns: 3;
+                height: 100%;
+            }
+
+            header {
+                position: relative;
+                width: 100%;
+                min-height: auto;
+                /*-webkit-background-size: cover;
+                -moz-background-size: cover;
+                background-size: cover;
+                -o-background-size: cover;
+                background-position: center;
+                background-image: url('../img/header.jpg');*/
+                text-align: center;
+                color: var(--app-text-color);
+            }
+
+            header .header-container {
+                position: relative;
+                text-align: center;
+                padding: 100px 15px 100px;
+                width: 100%;
+            }
+
+            header .header-container .header-container-inner h1 {
+                font-weight: 700;
+                text-transform: uppercase;
+                margin-top: 0;
+                margin-bottom: 0;
+                font-size: 30px;
+            }
+
+            header .header-container .header-container-inner hr {
+                margin: 30px auto;
+                max-width: 100px;
+                height: 0px;
+                border: none;
+                border-top: 3px solid var(--app-primary-color);
+                box-sizing: content-box;
+            }
+
+            header .header-container .header-container-inner p {
+                font-size: 18px;
+                max-width: 80%;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            header .header-container .header-container-inner paper-button {
+                background-color: var(--app-primary-color);
+            }
+
+            header .header-container .header-container-inner a {
+                text-decoration: none;
+                font-family: 'Roboto', 'Noto', sans-serif;
+                font-weight: bold;
+                font-size: 14px;
+                -webkit-font-smoothing: antialiased;
+                color: var(--app-text-color);
+            }
+
+            @media (min-width: 768px) {
+                header {
+                    min-height: 100%;
+                }
+                header .header-container {
+                    position: absolute;
+                    top: 50%;
+                    -webkit-transform: translateY(-50%);
+                    -ms-transform: translateY(-50%);
+                    transform: translateY(-50%);
+                    padding: 0;
+                }
+                header .header-container .header-container-inner {
+                    max-width: 1000px;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+                header .header-container .header-container-inner h1 {
+                    font-size: 50px;
+                }
+                header .header-container .header-container-inner p {
+                    font-size: 18px;
+                    max-width: 80%;
+                    margin-left: auto;
+                    margin-right: auto;
+                }
+            }
+
+            section {
+                padding: 100px 0;
+                text-align: center;
+                font-size: 16px;
+            }
+
+            section h2 {
+                font-size: 30;
+            }
+
+            section.bg-primary {
+                background-color: var(--app-primary-color);
+            }
+
+            section a {
+                text-decoration: none;
+                font-family: 'Roboto', 'Noto', sans-serif;
+                font-weight: bold;
+                font-size: 14px;
+                -webkit-font-smoothing: antialiased;
+                color: var(--app-text-color);
+            }
+
+            paper-button.primary-inverted {
+                background-color: #ffffff;
+                color: var(--app-primary-color);
+            }
+
+            section hr {
+                margin: 30px auto;
+                max-width: 100px;
+                height: 0px;
+                border: none;
+                border-top: 3px solid var(--app-primary-color);
+                box-sizing: content-box;
+            }
+
+            hr.light {
+                border-top-color: #ffffff;
+            }
+
+            .large-icon {
+                --iron-icon-height: 64px;
+                --iron-icon-width: 64px;
+            }
+
+            iron-icon.service-icon.visible {
+                opacity: 1;
+                transform: scale(1);
+                transition-property: opacity, transform;
+                transition-duration: 1s;
+            }
+
+            iron-icon.service-icon {
+                opacity: 0;
+                transform: scale(0.1);
+            }
+
+            .delay-1s {
+                -webkit-transition-delay: 1s;
+                transition-delay: 1s;
+            }
+
+            .delay-2s {
+                -webkit-transition-delay: 2s;
+                transition-delay: 2s;
+            }
+
+            .delay-3s {
+                -webkit-transition-delay: 3s;
+                transition-delay: 3s;
+            }
+
+            .serviceBox p {
+                opacity: 1;
+                transform: translate(0);
+                transition-property: opacity, transform;
+                transition-duration: 1s;
+            }
+
+            .serviceBox p.in-left.hidden {
+                opacity: 1;
+                transform: translateX(-100px);
+            }
+
+            .serviceBox p.in-bottom.hidden {
+                opacity: 1;
+                transform: translateY(100px);
+            }
+
+            .serviceBox p.in-right.hidden {
+                opacity: 1;
+                transform: translateX(100px);
+            }
+
+            .serviceBox {
+                overflow: hidden;
+            }
+        </style>
+
+        <header>
+            <div class="header-container">
+                <div class="header-container-inner">
+                    <h1>Web Component Playground</h1>
+                    <hr>
+                    <p>A starter template for experimenting with Web Components.</p>
+                    <a href="#about" tabindex="-1">
+                        <paper-button raised>Find out More</paper-button>
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <section class="bg-primary" id="about">
+            <h2>We've got what you need!</h2>
+            <hr class="light">
+            <p class="text-faded">Web Component Playground has everything you need to get your new website up and running in no time!</p>
+            <a href="#services">
+                <paper-button raised class="primary-inverted">Get Started!</paper-button>
+            </a>
+        </section>
+
+        <section id="services">
+            <h2>At Your Service</h2>
+            <hr>
+            <alicorn-scroll-watcher id="polymerScrollWatcher">
+                <div class="app-grid">
+                    <div class="serviceBox">
+                        <iron-icon icon="polymer" class="service-icon large-icon delay-1s"></iron-icon>
+                        <p class="in-left hidden">Made with Polymer.</p>
+                    </div>
+                    <div class="serviceBox">
+                        <iron-icon icon="playground-icons:markdown" class="service-icon large-icon delay-2s"></iron-icon>
+                        <p class="in-bottom hidden">Pages can be created with Markdown.</p>
+                    </div>
+                    <div class="serviceBox">
+                        <iron-icon icon="build" class="service-icon large-icon delay-3s"></iron-icon>
+                        <p class="in-right hidden">Fork this to create your own playgound, or use as the basis for an entire site.</p>
+                    </div>
+                </div>
+            </alicorn-scroll-watcher>
+        </section>
+
+        <section class="bg-primary" id="fork">
+            <iron-icon icon="playground-icons:code-fork" class="large-icon"></iron-icon>
+            <p class="text-faded">Get started by forking Web Component Playground.</p>
+            <a href="https://github.com/mlunnay/webcomponent-playground">
+                <paper-button raised class="primary-inverted">Fork Me!</paper-button>
+            </a>
+        </section>
+    </template>
+
+    <script>
+        class PlaygroundHome extends Polymer.Element {
+            static get is() { return 'playground-home' }
+
+            ready() {
+                super.ready();
+                document.getElementById('app').addEventListener('hash-changed', (e) => this._onHashChanged(e));
+                var callback = () => {
+                    this.$.services.querySelectorAll('iron-icon').forEach(e => e.classList.add('visible'));
+                    this.$.services.querySelectorAll('p').forEach(e => e.classList.remove('hidden'));
+                    this.$.polymerScrollWatcher.removeEventListener('fully-enter-viewport', callback);
+                }
+                this.$.polymerScrollWatcher.addEventListener('fully-enter-viewport', callback);
+            }
+
+            _onHashChanged(event) {
+                var element = this.$[event.detail.hash];
+                if (element)
+                    element.scrollIntoView();
+            }
+        }
+
+        // Register custom element definition using standard platform API 
+        customElements.define(PlaygroundHome.is, PlaygroundHome);
+    </script>
+</dom-module>

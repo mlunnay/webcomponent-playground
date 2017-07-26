@@ -1,0 +1,23 @@
+{
+  "entrypoint": "index.html",
+  "shell": "src/playground-app.html",
+  "fragments": [
+    "src/mark-down.html",
+    "src/playground-static.html",
+    "src/playground-syntax-styles.html",
+    "src/page-loading-behavior.html",
+    "src/playground-icons.html"
+  ],
+  "sources": [
+   "src/**/*",
+   "data/**/*",
+   "images/**/*",
+   "static/**/*",
+   "bower.json"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "node_modules/marked/lib/marked.js",
+    "node_modules/codemirror/lib/codemirror.css"
+  ]
+}
