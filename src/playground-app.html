@@ -103,16 +103,16 @@
     <app-location id="location" route="{{route}}" __hash="{{hash}}"></app-location>
     <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}" query-params="{{queryParams}}"></app-route>
 
-    <app-header-layout id="header" fullbleed>
-      <app-header slot="header" effects="waterfall" reveals>
+    <app-header-layout id="header" fullbleed="">
+      <app-header slot="header" effects="waterfall" reveals="">
         <app-toolbar>
           <paper-icon-button icon="menu" on-tap="_toggleDrawer"></paper-icon-button>
-          <div main-title>Web Component Playground</div>
+          <div main-title="">Web Component Playground</div>
           <paper-icon-button icon="search"></paper-icon-button>
           <a href="/about">
             <paper-icon-button icon="info"></paper-icon-button>
           </a>
-          <paper-progress id="progress" indeterminate bottom-item></paper-progress>
+          <paper-progress id="progress" indeterminate="" bottom-item=""></paper-progress>
         </app-toolbar>
       </app-header>
 
@@ -125,20 +125,20 @@
 
         <playground-404-error name="404" id="error"></playground-404-error>
 
-        <playground-static unresolved name="about" page-title="About Web Component Playground"></playground-static>
+        <playground-static unresolved="" name="about" page-title="About Web Component Playground"></playground-static>
       </iron-pages>
 
     </app-header-layout>
-    <app-drawer slot="drawer" id="drawer" swipe-open>
+    <app-drawer slot="drawer" id="drawer" swipe-open="">
       <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
         <a name="home" href="home" tabindex="-1">
           <paper-icon-item>
-            <iron-icon icon="home" item-icon slot="item-icon"></iron-icon>
+            <iron-icon icon="home" item-icon="" slot="item-icon"></iron-icon>
             <span>home</span>
           </paper-icon-item>
-        <a name="about" href="about" tabindex="-1">
+        </a><a name="about" href="about" tabindex="-1">
           <paper-icon-item>
-            <iron-icon icon="info" item-icon slot="item-icon"></iron-icon>
+            <iron-icon icon="info" item-icon="" slot="item-icon"></iron-icon>
             <span>about</span>
           </paper-icon-item>
         </a>
