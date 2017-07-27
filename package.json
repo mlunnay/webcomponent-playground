@@ -12,7 +12,8 @@
     "test": "polymer serve -o --open-path home",
     "test:full": "polymer test",
     "lint": "eslint config src/** --ext .js",
-    "tunnel": "lt --port 8081"
+    "tunnel": "lt --port 8081",
+    "deploy": "npm run build:simple && rimraf build/default/bower.json && gh-pages -d build/default"
   },
   "repository": "https://github.com/mlunnay/webcomponent-playground.git",
   "author": "Michael Lunnay <mlunnay@gmail.com>",
@@ -20,6 +21,7 @@
   "devDependencies": {
     "bower": "^1.8.0",
     "document-register-element": "^1.5.0",
+    "gh-pages": "^1.0.0",
     "localtunnel": "^1.8.2",
     "rimraf": "^2.6.1"
   },
