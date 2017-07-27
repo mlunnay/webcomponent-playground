@@ -101,7 +101,7 @@
     </style>
 
     <app-location id="location" route="{{route}}" __hash="{{hash}}"></app-location>
-    <app-route route="{{route}}" pattern="/:page" data="{{routeData}}" tail="{{subroute}}" query-params="{{queryParams}}"></app-route>
+    <app-route route="{{route}}" pattern="[[routePattern]]" data="{{routeData}}" tail="{{subroute}}" query-params="{{queryParams}}"></app-route>
 
     <app-header-layout id="header" fullbleed="">
       <app-header slot="header" effects="waterfall" reveals="">
@@ -164,7 +164,11 @@
             reflectToAttribute: true,
             observer: '_pageChanged',
           },
-          hash: String
+          hash: String,
+          routePattern: {
+            type: String,
+            reflectToAttribute: true
+          }
         };
       }
 
@@ -187,18 +191,32 @@
         this.addEventListener('notify', (e) => this._notifyUser(e));
 
         this.$.location.shadowRoot.children[0].addEventListener('hash-changed', (e) => this._onHashChanged(e));
+        this.routePattern = this.route.path + ':page';
+        this.basePath = this.route.path;
       }
 
       _updatePage(page) {
-        this.page = page || 'home';
+        if(this.basePath === undefined)
+          this.basePath = page;
+        var p = page;
+        // if(this.basePath.length != 0 && p.startsWith(this.basePath)) {
+        //   var len = this.basePath.length;
+        //   if(len != 0 && p.indexOf('/') == len) len++;
+        //   p = p.substring(len + 1);
+        // }
+        // console.log('**', p);
+        this.page = p || 'home';
 
         // Close the drawer - in case the *route* change came from a link in the drawer.
         this.drawerOpened = false;
       }
 
       _pageChanged(page, oldPage) {
+        console.log('_pageChanged', page);
         if (page != null) {
           this._setLoading();
+          // Close the drawer - in case the *route* change came from a link in the drawer.
+          this.drawerOpened = false;
           // home route & 404 are eagerly loaded
           if (page == 'home' || page == '404') {
             this._pageLoaded(Boolean(oldPage));

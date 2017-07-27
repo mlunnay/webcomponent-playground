@@ -1,6 +1,6 @@
-<link rel="import" href="/bower_components/polymer/polymer-element.html">
-<link rel="import" href="/bower_components/app-layout/helpers/helpers.html">
-<link rel="import" href="/bower_components/iron-ajax/iron-ajax.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-layout/helpers/helpers.html">
+<link rel="import" href="../bower_components/iron-ajax/iron-ajax.html">
 
 <link rel="import" href="playground-styles.html">
 <link rel="import" href="playground-syntax-styles.html">
@@ -19,7 +19,7 @@
     </style>
 
     <!-- modify the URL below to point to the location of the site -->
-    <iron-ajax id="ajax" url="/static/[[name]].md" handle-as="text" loading="{{loading}}" last-response="{{_markdown}}"></iron-ajax>
+    <iron-ajax id="ajax" url="static/[[name]].md" handle-as="text" loading="{{loading}}" last-response="{{_markdown}}"></iron-ajax>
 
     <h1 class="page-title">[[pageTitle]]</h1>
 
